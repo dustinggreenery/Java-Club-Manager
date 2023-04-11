@@ -1,0 +1,4 @@
+.vscode
+target
+nb-configuration.xml
+src/main/resources/META-INF/persistence.xml

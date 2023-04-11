@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Edit Club</title>
+    </h:head>
+    <h:body>
+        <h2>Current Club Information</h2>
+        <h:form rendered="${clubLeaderManagedBean.leaderHasAClub()}" >
+            <h:dataTable value="${clubManagedBean.clubById(clubLeaderManagedBean.clubId)}" var="club" headerClass="header" rowClasses="oddRows,evenRows" styleClass="table" cellpadding="5" cellspacing="0">
+                <h:column>
+                    <f:facet name="header"> Club </f:facet>
+                    ${club.name}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header"> Description </f:facet>
+                    ${club.description}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header"> Meeting Day </f:facet>
+                    ${club.meetingDay}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header"> Meeting Time </f:facet>
+                    ${club.meetingTime}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header"> Room Number </f:facet>
+                    ${club.roomNumber}
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        
+        <p />
+        
+        <h:form>
+            <h:outputLabel rendered="${!clubLeaderManagedBean.leaderHasAClub()}" >Leader does not have any club</h:outputLabel>
+            
+            <h:outputLabel for="name" rendered="${clubLeaderManagedBean.leaderHasAClub()}" >Club Name: </h:outputLabel>
+            <h:inputText id="name" rendered="${clubLeaderManagedBean.leaderHasAClub()}" value="${clubManagedBean.name}" /> <p />
+            
+            <h:outputLabel for="description" rendered="${clubLeaderManagedBean.leaderHasAClub()}" >Description: </h:outputLabel>
+            <h:inputText id="description" rendered="${clubLeaderManagedBean.leaderHasAClub()}" value="${clubManagedBean.description}" /> <p />
+            
+            <h:outputLabel for="meeting-day" rendered="${clubLeaderManagedBean.leaderHasAClub()}" >Meeting Day: </h:outputLabel>
+            <h:inputText id="meeting-day" rendered="${clubLeaderManagedBean.leaderHasAClub()}" value="${clubManagedBean.meetingDay}" /> <p />
+            
+            <h:outputLabel for="meeting-time" rendered="${clubLeaderManagedBean.leaderHasAClub()}" >Meeting Time: </h:outputLabel>
+            <h:inputText id="meeting-time" rendered="${clubLeaderManagedBean.leaderHasAClub()}" value="${clubManagedBean.meetingTime}" /> <p />
+        
+            <h:outputLabel for="room-number" rendered="${clubLeaderManagedBean.leaderHasAClub()}" >Room Number: </h:outputLabel>
+            <h:inputText id="room-number" rendered="${clubLeaderManagedBean.leaderHasAClub()}" value="${clubManagedBean.roomNumber}" /> <p />
+            
+            <h:commandButton id="back-button" value="Back" action="index.xhtml" />
+            <h:commandButton id="autofill-button" rendered="${clubLeaderManagedBean.leaderHasAClub()}" value="Autofill Information" action="${clubManagedBean.autoFillInfo(clubLeaderManagedBean.clubId)}" />
+            <h:commandButton id="edit-button" rendered="${clubLeaderManagedBean.leaderHasAClub()}" value="Edit Club" action="${clubManagedBean.editClub(clubLeaderManagedBean.clubId)}" />
+        </h:form>
+    </h:body>
+</html>

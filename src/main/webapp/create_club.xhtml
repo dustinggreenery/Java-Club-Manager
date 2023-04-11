@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Create Club</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:outputLabel rendered="${clubLeaderManagedBean.leaderHasAClub()}" >Club Already Exists Under Leader</h:outputLabel>
+            
+            <h:outputLabel for="name" rendered="${!clubLeaderManagedBean.leaderHasAClub()}" >Club Name: </h:outputLabel>
+            <h:inputText id="name" rendered="${!clubLeaderManagedBean.leaderHasAClub()}" value="${clubManagedBean.name}" required="true" requiredMessage="Name is required" /> <p />
+            
+            <h:outputLabel for="description" rendered="${!clubLeaderManagedBean.leaderHasAClub()}" >Description: </h:outputLabel>
+            <h:inputText id="description" rendered="${!clubLeaderManagedBean.leaderHasAClub()}" value="${clubManagedBean.description}" required="true" requiredMessage="Password is required" /> <p />
+            
+            <h:outputLabel for="meeting-day" rendered="${!clubLeaderManagedBean.leaderHasAClub()}" >Meeting Day: </h:outputLabel>
+            <h:inputText id="meeting-day" rendered="${!clubLeaderManagedBean.leaderHasAClub()}" value="${clubManagedBean.meetingDay}" required="true" requiredMessage="Meeting Day is required" /> <p />
+            
+            <h:outputLabel for="meeting-time" rendered="${!clubLeaderManagedBean.leaderHasAClub()}" >Meeting Time: </h:outputLabel>
+            <h:inputText id="meeting-time" rendered="${!clubLeaderManagedBean.leaderHasAClub()}" value="${clubManagedBean.meetingTime}" required="true" requiredMessage="Meeting Time is required" /> <p />
+            
+            <h:outputLabel for="room-number" rendered="${!clubLeaderManagedBean.leaderHasAClub()}" >Room Number: </h:outputLabel>
+            <h:inputText id="room-number" rendered="${!clubLeaderManagedBean.leaderHasAClub()}" value="${clubManagedBean.roomNumber}" required="true" requiredMessage="Room Number is required" /> <p />
+            
+            <h:commandButton id="back-button" value="Back" action="index.xhtml" />
+            <h:commandButton id="create-button" rendered="${!clubLeaderManagedBean.leaderHasAClub()}" value="Create Club" action="${clubManagedBean.createClub(clubLeaderManagedBean.clubId)}" />
+        </h:form>
+    </h:body>
+</html>

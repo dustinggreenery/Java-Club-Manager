@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Club Leader Login</title>
+    </h:head>
+    <h:body>
+        <h2>Login</h2>
+        ${clubLeaderManagedBean.printClubLeader()} <p />
+        <h:form>
+            <h:outputLabel for="username">Username: </h:outputLabel>
+            <h:inputText id="username" value="${clubLeaderManagedBean.username}" /> <p />
+            
+            <h:outputLabel for="password">Password: </h:outputLabel>
+            <h:inputText id="password" value="${clubLeaderManagedBean.password}" /> <p />
+            
+            <h:commandButton id="back-button" value="Back" action="index.xhtml" />
+            <h:commandButton id="create-leader-button" value="Create Club Leader" action="create_leader.xhtml" /> <p />
+            <h:commandButton id="login-button" value="Login to Club Leader" action="${clubLeaderManagedBean.setClubIdFromLogin()}" /> <p />
+            <h:commandButton id="edit-club-button" value="Edit Club" action="edit_club.xhtml" />
+            <h:commandButton id="create-club-button" value="Create Club" action="create_club.xhtml" />
+        </h:form>
+    </h:body>
+</html>
